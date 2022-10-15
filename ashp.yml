@@ -1,0 +1,120 @@
+panasonic:
+ frequency: 38000
+ commands:
+  start:
+   mark: 3500
+   space: 1750
+  newframe:
+   mark: 500
+   space: 10500
+  0:
+   mark: 435
+   space: 500
+  1:
+   mark: 435
+   space: 1300
+ temperature:
+  place: 109
+  offset: 16
+  length: 4
+  endianess: lsb
+ mode:
+  place: 104
+  length: 4
+  endianess: msb
+  values:
+   heating: 1
+   cooling: 2
+   drying: 3
+   fan: 4
+   auto: 5
+ swing-vertical:
+  place: 128
+  length: 4
+  endianess: msb
+  values:
+    0: 8
+    25: 4
+    50: 12
+    75: 2
+    100: 10
+    auto: 15
+ fanspeed:
+  place: 132
+  length: 4
+  endianess: msb
+  values:
+    0: 12
+    25: 2
+    50: 10
+    75: 6
+    100: 14
+    auto: 5
+ checksum:
+  place: 208
+  length: 8
+  endianess: msb
+  start: 64
+  end: 208
+  type: byte-sum
+  constant: 0
+ template: 
+  data: [0x40, 0x04, 0x07, 0x20, 0x00, 0x00, 0x00, 0x60,    0x40, 0x04, 0x07, 0x20, 0x00, 0, 4, 1,    0, 0x00, 0x00, 0x70, 0x07, 0x00, 0x00, 0x81,   0x00, 0x00, 0x00]
+  length: 216
+ frames:
+  - start
+  - databits: 64
+  - newframe
+  - databits: 152
+toshiba:
+ frequency: 38000
+ commands:
+  start:
+   mark: 4400
+   space: 4300
+  newframe:
+   mark: 440
+   space: 7048
+  0:
+   mark: 543
+   space: 472
+  1:
+   mark: 543
+   space: 1623
+ temperature:
+  place: 40
+  offset: 17
+  length: 4
+  endianess: msb
+ mode:
+  place: 54
+  length: 2
+  endianess: msb
+  values:
+   heating: 3
+   cooling: 1
+   drying: 2
+   auto: 0
+ pure:
+  place: 59
+  length: 1
+  values:
+    off: 0
+    on: 1
+ fanspeed:
+  place: 48
+  length: 4
+  endianess: lsb
+  values:
+    0: 2
+    25: 6
+    50: 1
+    75: 5
+    100: 3
+    auto: 0
+ onoff:
+  place: 53
+  length: 1
+  values:
+    off: 1
+    on: 0
